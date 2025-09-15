@@ -283,7 +283,19 @@ Image applyBlur(const Image& input) { //lasheen
     //   For each neighbor (ky from -1 to 1, kx from -1 to 1):
     //     sum += input(y+ky, x+kx, c)
     //   output(y, x, c) = sum / 9
-    
+    for (int y = 1; y < height - 1; y++) {
+        for (int x = 1; x < width - 1; x++) {
+            for (int c = 0; c < channels; c++) {
+                int sum = 0;
+                for (int ky = -1; ky <= 1; ky++) {
+                    for (int kx = -1; kx <= 1; kx++) {
+                        sum += input(y + ky, x + kx, c);
+                    }
+                }
+                output(y, x, c) = sum / 9;
+            }
+        }
+    }
     return output;
 }
 
