@@ -178,7 +178,13 @@ Image flipHorizontal(const Image& input) { //lasheen
     // TODO: Implement this function
     // For each pixel and each channel:
     //   output(y, width-1-x, c) = input(y, x, c)
-    
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            for (int c = 0; c < channels; c++) {
+                output(y, width - 1 - x, c) = input(y, x, c);
+            }
+        }
+    }
     return output;
 }
 
