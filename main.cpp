@@ -296,7 +296,7 @@ Image adjustContrast(const Image &input, float factor)
             for (int c = 0; c < channels; ++c)
             {
                 float newValue = factor * (input(y, x, c) - 128) + 128;
-                int clamped = static_cast<int>(round(newValue));
+                int clamped = (int)(round(newValue));
                 clamped = max(0, min(255, clamped));
                 output(y, x, c) = clamped;
             }
